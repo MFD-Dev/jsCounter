@@ -1,7 +1,9 @@
 /*
+-- html
 -- create a counter button to hold the count
 -- create a plus counter button
 -- create a minus counter button
+-- js
 -- create variables for all 3 buttons
 
 -- reference buttons & addEvent Listeners + functions
@@ -15,25 +17,37 @@
 -- then modify the h1 element w/innerHtml to match count variable
 */
 
-let plusButton = document.getElementById("counterPlus");
-let minusButton = document.getElementById("counterMinus");
-let counter = document.getElementById("counterButton");
+
+let decreaseBtn = document.getElementById("button__decrease");
+let increaseBtn = document.getElementById("button__increase");
+let counter = document.getElementById("counter");
 let count = 0;
 
-
-plusButton.addEventListener('click', () => {
-    count ++;
-    // counter.innerHTML = value;
-    console.log('plus')
-    
-})
-
-minusButton.addEventListener('click', ()=> {
+// addEventListeners for these buttons.  When user 'clicks' on it.
+decreaseBtn.addEventListener('click', ()=> { // create a arrow func
     count --;
-    console.log('minus');
+    counter.innerHTML = count; // send the count to the html
+    numberStyle(); // call the number color function
 })
 
-// function counter() {
-//     counter.innerHTML = value;
-// }
+increaseBtn.addEventListener('click', ()=> {
+    count ++;
+    counter.innerHTML = count;
+    numberStyle();
+})
+// create a function that depending on the condition will change the 
+// color of the number.  poistive or negative.  Else it's black. aka 0.
+function numberStyle() { 
+    if (count < 0) {
+        counter.classList.add("negative");
+    } else if (count > 0){
+        counter.classList.add("positive")
+    } else {
+        counter.classList.remove("negative");
+        counter.classList.remove("positive");
+    }
+}
+
+
+
 
